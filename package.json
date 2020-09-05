@@ -1,0 +1,18 @@
+{
+  "name": "task_b1",
+  "version": "1.0.0",
+  "description": "A simple Javascript backend and REST API to GET, POST, PUT, DELETE",
+  "main": "index.js",
+  "engines": {
+    "node": "12.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Phoenix",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.3"
+  }
+}

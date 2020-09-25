@@ -15,6 +15,7 @@ describe("Users", function() {
 
     before(function(done) {
         setTimeout(done, 500);
+        
         const sql_create_table = "CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255), mobile INTEGER);";
         db.query(sql_create_table, (error, result) => {
             // Check for error
@@ -37,7 +38,7 @@ describe("Users", function() {
                 }
             });
         });
-        done(null);
+        done();
     });
 
     after(function(done) {

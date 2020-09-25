@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 chai.should();
 
 describe("Users", function() {
-    this.timeout(4000);
+    this.timeout(4200);
 
     before(function(done) {
         const sql_create_table = "CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255), mobile INTEGER);";

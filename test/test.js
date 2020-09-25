@@ -12,6 +12,23 @@ chai.should();
 
 describe("Users", function() {
 
+    before(function(done) {
+        setTimeout(done, 500);
+
+        users.forEach(function(user) {
+            db.query((new User(user)).addUser(), (error, result) => {
+                // Check for error
+                if (error) {
+                    console.log("Error while populating database:");
+                    console.log(error);
+                } else {
+                    console.log("Query successful:");
+                }
+            });
+        });
+        done();
+    });
+
     after(function(done) {
         setTimeout(done, 500);
         const sql_drop_table = "DROP TABLE IF EXISTS users;"

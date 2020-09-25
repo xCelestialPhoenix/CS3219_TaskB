@@ -13,12 +13,27 @@ chai.should();
 describe("Users", () => {
 
     before(function(done) {
+
+        const sql_create_table = "CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255), mobile INTEGER);";
+        db.query(sql_create_table, (error, result) => {
+            // Check for error
+            if (error) {
+                console.log("Error while creating table:");
+                console.log(error);
+                done(error);
+            } else {
+                console.log("Table Created.");
+            }
+        });
+
         users.forEach(function(user) {
             db.query((new User(user)).addUser(), (error, result) => {
                 // Check for error
                 if (error) {
                     console.log("Error while populating database:");
                     console.log(error);
+                    done(error);
+                    return;
                 } else {
                     console.log("Query successful:");
                 }

@@ -21,6 +21,7 @@ describe("Users", function() {
             if (error) {
                 console.log("Error while creating table:");
                 done(error);
+                return;
             }
         });
 
@@ -61,6 +62,7 @@ describe("Users", function() {
     describe("GET /", () => {
 
         it("should get all users record", (done) => {
+            setTimeout(done, 500);
             chai.request(app)
                 .get('/api/user')
                 .end((err, res) => {

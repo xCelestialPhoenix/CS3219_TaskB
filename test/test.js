@@ -20,8 +20,10 @@ describe("Users", function() {
             // Check for error
             if (error) {
                 console.log("Error while creating table:");
+                console.log(error);
                 done(error);
-                return;
+            } else {
+                console.log("Table Created.");
             }
         });
 
@@ -30,8 +32,11 @@ describe("Users", function() {
                 // Check for error
                 if (error) {
                     console.log("Error while populating database:");
+                    console.log(error);
                     done(error);
                     return;
+                } else {
+                    console.log("Query successful:");
                 }
             });
         });
@@ -45,6 +50,9 @@ describe("Users", function() {
             // Check for error
             if (error) {
                 console.log("Error while dropping table:");
+                console.log(error);
+            } else {
+                console.log("Drop successful.");
             }
         });
 
@@ -53,9 +61,12 @@ describe("Users", function() {
             // Check for error
             if (error) {
                 console.log("Error while creating table:");
+                console.log(error);
                 done(error);
+            } else {
+                console.log("Table Created.");
+                done(null);
             }
-            done(null);
         });
     })
 

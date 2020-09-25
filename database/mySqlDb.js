@@ -14,8 +14,6 @@ if (process.env.NODE_ENV === "production") {
     config.password = process.env.LOCAL_SQL_PASSWORD;
 }
 
-console.log(config)
-
 var connection = mysql.createConnection(config);
 
 function executeQuery(sql, callback) {

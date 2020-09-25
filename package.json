@@ -18,7 +18,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "mocha --timeout 5000 --exit",
+    "test": "mocha --exit",
     "start": "nodemon server.js"
   },
   "author": "",

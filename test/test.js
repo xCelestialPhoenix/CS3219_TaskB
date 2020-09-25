@@ -11,10 +11,9 @@ chai.use(chaiHttp);
 chai.should();
 
 describe("Users", function() {
-    // this.timeout(5000);
+    this.timeout(500);
 
     before(function(done) {
-        setTimeout(500);
         const sql_create_table = "CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255), mobile INTEGER);";
         db.query(sql_create_table, (error, result) => {
             // Check for error
@@ -37,11 +36,9 @@ describe("Users", function() {
                 }
             });
         });
-        done();
     });
 
     after(function(done) {
-        setTimeout(500);
         const sql_drop_table = "DROP TABLE IF EXISTS users;"
         db.query(sql_drop_table, (error, result) => {
             // Check for error
@@ -70,7 +67,6 @@ describe("Users", function() {
     describe("GET /", () => {
 
         it("should get all users record", (done) => {
-            setTimeout(500);
             chai.request(app)
                 .get('/api/user')
                 .end((err, res) => {
@@ -82,7 +78,6 @@ describe("Users", function() {
         
         // Test to get single user record
         it("should get a single user record", (done) => {
-            setTimeout(500);
             const username = "johndoe123";
             chai.request(app)
                 .get(`/api/user/${username}`)
@@ -95,7 +90,6 @@ describe("Users", function() {
         
         // Test to get single user record
         it("should not get a single student record", (done) => {
-            setTimeout(500);
             const username = "notjohndoe123";
             chai.request(app)
                 .get(`/api/user/${username}`)

@@ -20,7 +20,8 @@ describe("Users", function() {
             if (error) {
                 console.log("Error while creating table:");
                 console.log(error);
-                done(err);
+                done(error);
+                return;
             } else {
                 console.log("Table Created.");
                 users.forEach(function(user) {
@@ -29,13 +30,14 @@ describe("Users", function() {
                         if (error) {
                             console.log("Error while populating database:");
                             console.log(error);
-                            done(err);
+                            done(error);
+                            return;
                         } else {
                             console.log("Query successful:");
-                            done();
                         }
                     });
                 });
+                done(null);
             }
         });
     });

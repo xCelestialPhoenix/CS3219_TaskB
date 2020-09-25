@@ -2,9 +2,9 @@ const mysql = require("mysql");
 require('dotenv').config();
 
 var config = {
-    user: process.env.SQL_TRAVIS_USER,
+    user: process.env.SQL_USER,
     database: process.env.SQL_DATABASE,
-    password: process.env.SQL_TRAVIS_PASSWORD,
+    password: process.env.SQL_PASSWORD,
     insecureAuth : true
 }
 

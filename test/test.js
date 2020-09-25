@@ -43,7 +43,7 @@ describe("Users", () => {
     });
 
     after(function(done) {
-
+        this.timeout(5000);
         const sql_drop_table = "DROP TABLE IF EXISTS users;"
         db.query(sql_drop_table, (error, result) => {
             // Check for error
@@ -72,6 +72,7 @@ describe("Users", () => {
     describe("GET /", () => {
 
         it("should get all users record", (done) => {
+            this.timeout(5000);
             chai.request(app)
                 .get('/api/user')
                 .end((err, res) => {
@@ -83,6 +84,7 @@ describe("Users", () => {
         
         // Test to get single user record
         it("should get a single user record", (done) => {
+            this.timeout(5000);
             const username = "johndoe123";
             chai.request(app)
                 .get(`/api/user/${username}`)
@@ -95,6 +97,7 @@ describe("Users", () => {
         
         // Test to get single user record
         it("should not get a single student record", (done) => {
+            this.timeout(5000);
             const username = "notjohndoe123";
             chai.request(app)
                 .get(`/api/user/${username}`)

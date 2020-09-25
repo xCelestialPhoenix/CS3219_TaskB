@@ -44,7 +44,6 @@ exports.addUser = function (request, res) {
 
 exports.viewUser = function (request, res) {
    const username = '"' + request.params.username + '"';
-   console.log(User.getUserByUsername(username));
    db.query(User.getUserByUsername(username), (error, result) => {
 
       console.log("Select result: ");

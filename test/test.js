@@ -11,9 +11,32 @@ chai.use(chaiHttp);
 chai.should();
 
 describe("Users", function() {
+    // this.timeout(5000);
 
     before(function(done) {
-        setTimeout(done, 500);
+        
+        const sql_create_table = "CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255), mobile INTEGER);";
+        db.query(sql_create_table, (error, result) => {
+            // Check for error
+            if (error) {
+                console.log("Error while creating table:");
+                console.log(error);
+            } else {
+                console.log("Table Created.");
+            }
+        });
+
+        users.forEach(function(user) {
+            db.query((new User(user)).addUser(), (error, result) => {
+                // Check for error
+                if (error) {
+                    console.log("Error while populating database:");
+                    console.log(error);
+                } else {
+                    console.log("Query successful:");
+                }
+            });
+        });
         done();
     });
 

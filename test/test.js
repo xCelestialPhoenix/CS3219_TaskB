@@ -10,8 +10,8 @@ const users = require('./data/users').users;
 chai.use(chaiHttp);
 chai.should();
 
-describe("Users", () => {
-    timeout(5000);
+describe("Users", function() {
+    this.timeout(5000);
 
     before(function(done) {
 

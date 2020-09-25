@@ -14,15 +14,13 @@ describe("Users", function() {
     // this.timeout(5000);
 
     before(function(done) {
-        setTimeout(done, 5000);
+        setTimeout(done, 500);
         const sql_create_table = "CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255), mobile INTEGER);";
         db.query(sql_create_table, (error, result) => {
             // Check for error
             if (error) {
                 console.log("Error while creating table:");
                 done(error);
-            } else {
-                console.log("Table Created.");
             }
         });
 
@@ -33,8 +31,6 @@ describe("Users", function() {
                     console.log("Error while populating database:");
                     done(error);
                     return;
-                } else {
-                    console.log("Query successful:");
                 }
             });
         });
@@ -42,14 +38,12 @@ describe("Users", function() {
     });
 
     after(function(done) {
-        setTimeout(done, 5000);
+        setTimeout(done, 500);
         const sql_drop_table = "DROP TABLE IF EXISTS users;"
         db.query(sql_drop_table, (error, result) => {
             // Check for error
             if (error) {
                 console.log("Error while dropping table:");
-            } else {
-                console.log("Drop successful.");
             }
         });
 
@@ -59,10 +53,8 @@ describe("Users", function() {
             if (error) {
                 console.log("Error while creating table:");
                 done(error);
-            } else {
-                console.log("Table Created.");
-                done(null);
             }
+            done(null);
         });
     })
 
@@ -80,7 +72,7 @@ describe("Users", function() {
         
         // Test to get single user record
         it("should get a single user record", (done) => {
-            setTimeout(done, 5000);
+            setTimeout(done, 500);
             const username = "johndoe123";
             chai.request(app)
                 .get(`/api/user/${username}`)
@@ -93,7 +85,7 @@ describe("Users", function() {
         
         // Test to get single user record
         it("should not get a single student record", (done) => {
-            setTimeout(done, 5000);
+            setTimeout(done, 500);
             const username = "notjohndoe123";
             chai.request(app)
                 .get(`/api/user/${username}`)

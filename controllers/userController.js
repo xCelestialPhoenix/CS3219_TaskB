@@ -3,8 +3,6 @@ const User = require("../models/user");
 
 exports.index = function (request, res) {
     db.query(User.getAllUsers(), (error, result) => {
-         console.log("Select all result: ");
-         console.log(result);
         if (error) {
            res.status(400).json({
               "status": "error",
@@ -45,9 +43,6 @@ exports.addUser = function (request, res) {
 exports.viewUser = function (request, res) {
    const username = '"' + request.params.username + '"';
    db.query(User.getUserByUsername(username), (error, result) => {
-
-      console.log("Select result: ");
-      console.log(result);
       if(error) {
          res.status(404).json({
             'error': error.message,

@@ -5,6 +5,9 @@ node_js:
 services:
   - mysql
 
+before_install:
+  - mysql -e 'CREATE DATABASE cs3219TaskB;'
+
 cache:
   directories:
     - "node_modules"

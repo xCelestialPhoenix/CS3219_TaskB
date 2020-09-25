@@ -20,7 +20,6 @@ describe("Users", function() {
             // Check for error
             if (error) {
                 console.log("Error while creating table:");
-                console.log(error);
                 done(error);
             } else {
                 console.log("Table Created.");
@@ -32,7 +31,6 @@ describe("Users", function() {
                 // Check for error
                 if (error) {
                     console.log("Error while populating database:");
-                    console.log(error);
                     done(error);
                     return;
                 } else {
@@ -50,7 +48,6 @@ describe("Users", function() {
             // Check for error
             if (error) {
                 console.log("Error while dropping table:");
-                console.log(error);
             } else {
                 console.log("Drop successful.");
             }
@@ -61,7 +58,6 @@ describe("Users", function() {
             // Check for error
             if (error) {
                 console.log("Error while creating table:");
-                console.log(error);
                 done(error);
             } else {
                 console.log("Table Created.");
@@ -73,7 +69,6 @@ describe("Users", function() {
     describe("GET /", () => {
 
         it("should get all users record", (done) => {
-            setTimeout(done, 5000);
             chai.request(app)
                 .get('/api/user')
                 .end((err, res) => {

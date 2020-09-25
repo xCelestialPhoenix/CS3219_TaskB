@@ -11,7 +11,8 @@ chai.use(chaiHttp);
 chai.should();
 
 describe("Users", function() {
-    
+    this.timeout(4000);
+
     before(function(done) {
         users.forEach(function(user) {
             db.query((new User(user)).addUser(), (error, result) => {

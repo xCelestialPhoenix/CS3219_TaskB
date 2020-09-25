@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 chai.should();
 
 describe("Users", () => {
-    this.timeout(5000);
+    timeout(5000);
 
     before(function(done) {
 

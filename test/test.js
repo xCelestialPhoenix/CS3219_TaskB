@@ -32,7 +32,7 @@ describe("Users", function() {
                             done(err);
                         } else {
                             console.log("Query successful:");
-                            done(err);
+                            done();
                         }
                     });
                 });

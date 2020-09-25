@@ -2,15 +2,19 @@ const mysql = require("mysql");
 require('dotenv').config();
 
 var config = {
-    user: process.env.SQL_USER,
-    database: process.env.SQL_DATABASE,
-    password: process.env.SQL_PASSWORD,
-    insecureAuth : true
+    database: process.env.SQL_DATABASE
 }
 
-if (process.env.INSTANCE_CONNECTION_NAME && process.env.NODE_ENV == "production") {
-    config.socketPath = "/cloudsql/" + process.env.INSTANCE_CONNECTION_NAME;
+if (process.env.NODE_ENV === "production") {
+    config.host = process.env.CLOUD_SQL_IP;
+    config.user = process.env.CLOUD_SQL_USER;
+    config.password = process.env.CLOUD_SQL_PASSWORD;
+} else {
+    config.user = process.env.LOCAL_SQL_USER;
+    config.password = process.env.LOCAL_SQL_PASSWORD;
 }
+
+console.log(config)
 
 var connection = mysql.createConnection(config);
 

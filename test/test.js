@@ -80,7 +80,7 @@ describe("Users", () => {
                     done();
                 });
         });
-                
+        
         // Test to get single user record
         it("should get a single user record", (done) => {
             const username = "johndoe123";

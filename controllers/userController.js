@@ -1,11 +1,10 @@
-const e = require("express");
 const db = require("../database/mySqlDb");
 const User = require("../models/user");
-const { use } = require("../router");
 
 exports.index = function (request, res) {
-
     db.query(User.getAllUsers(), (error, result) => {
+         console.log("Select all result: ");
+         console.log(result);
         if (error) {
            res.status(400).json({
               "status": "error",
@@ -47,9 +46,16 @@ exports.viewUser = function (request, res) {
    const username = '"' + request.params.username + '"';
    console.log(User.getUserByUsername(username));
    db.query(User.getUserByUsername(username), (error, result) => {
+
+      console.log("Select result: ");
+      console.log(result);
       if(error) {
          res.status(404).json({
             'error': error.message,
+         });
+      } else if(result.length === 0) {
+         res.status(404).json({
+            'error': "User not found."
          });
       } else {
          res.status(200).json({

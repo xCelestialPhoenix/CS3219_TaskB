@@ -5,10 +5,13 @@ var config = {
     database: process.env.SQL_DATABASE
 }
 
-if (process.env.NODE_ENV === "production") {
+if(process.env.NODE_ENV === "production") {
     config.host = process.env.CLOUD_SQL_IP;
     config.user = process.env.CLOUD_SQL_USER;
     config.password = process.env.CLOUD_SQL_PASSWORD;
+} else if(process.env.NODE_ENV === "travis") {
+    config.user = process.env.TRAVIS_USER;
+    config.password = process.env.TRAVIS_PASSWORD;
 } else {
     config.user = process.env.LOCAL_SQL_USER;
     config.password = process.env.LOCAL_SQL_PASSWORD;

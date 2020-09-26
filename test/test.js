@@ -8,12 +8,9 @@ const users = require('./data/users').users;
 
 // Configure chai
 chai.use(chaiHttp);
-chai.should();
 
 describe("Users", function() {
-    
     before(function(done) {
-        setTimeout(done, 50);
         users.forEach(function(user) {
             db.query((new User(user)).addUser(), (error, result) => {
                 // Check for error
@@ -27,10 +24,10 @@ describe("Users", function() {
                 }
             });
         });
+        done(null);
     });
 
     after(function(done) {
-        setTimeout(done, 50);
         const sql_drop_table = "DROP TABLE IF EXISTS users;"
         db.query(sql_drop_table, (error, result) => {
             // Check for error
@@ -48,6 +45,7 @@ describe("Users", function() {
                         done(error);
                     } else {
                         console.log("Table Created.");
+                        done(null);
                     }
                 });
             }
@@ -57,36 +55,35 @@ describe("Users", function() {
     })
 
     describe("GET /", () => {
-        
-        it("should get all users record", (done) => {
+        it("should get all users record", function(done) {
             chai.request(app)
                 .get('/api/user')
                 .end((err, res) => {
-                    expect(res).to.have.status(200);
-                    expect(res.body).to.be.a('object');
+                    chai.expect(res).to.have.status(200);
+                    chai.expect(res.body).to.be.a('object');
                     done();
                 });
         });
         
         // Test to get single user record
-        it("should get a single user record", (done) => {
+        it("should get a single user record", function(done) {
             const username = "johndoe123";
             chai.request(app)
                 .get(`/api/user/${username}`)
                 .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
+                    chai.expect(res).to.have.status(200);
+                    chai.expect(res.body).to.be.a('object');
                     done();
                 });
         });
         
         // Test to get single user record
-        it("should not get a single student record", (done) => {
-            const username = "johndoe123";
+        it("should not get a single student record", function(done) {
+            const username = "notjohndoe123";
             chai.request(app)
                 .get(`/api/user/${username}`)
                 .end((err, res) => {
-                    res.should.have.status(404);
+                    chai.expect(res).to.have.status(404);
                     done();
                 });
         });

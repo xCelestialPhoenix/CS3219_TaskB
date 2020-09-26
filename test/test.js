@@ -19,7 +19,6 @@ describe("Users", function() {
                     console.log("Error while populating database:");
                     console.log(error);
                     status = error;
-                    return;
                 }
             });
         });

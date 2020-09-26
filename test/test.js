@@ -11,20 +11,19 @@ chai.use(chaiHttp);
 
 describe("Users", function() {
     before(function(done) {
+        var status = null;
         users.forEach(function(user) {
             db.query((new User(user)).addUser(), (error, result) => {
                 // Check for error
                 if (error) {
                     console.log("Error while populating database:");
                     console.log(error);
-                    done(error);
+                    status = error;
                     return;
-                } else {
-                    console.log("Query successful:");
                 }
             });
         });
-        done(null);
+        done(status);
     });
 
     after(function(done) {
@@ -33,18 +32,15 @@ describe("Users", function() {
             // Check for error
             if (error) {
                 console.log("Error while dropping table:");
-                console.log(error);
+                done(error);
             } else {
-                console.log("Drop successful.");
                 const sql_create_table = "CREATE TABLE users ( username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255), mobile INTEGER);";
                 db.query(sql_create_table, (error, result) => {
                     // Check for error
                     if (error) {
                         console.log("Error while creating table:");
-                        console.log(error);
                         done(error);
                     } else {
-                        console.log("Table Created.");
                         done(null);
                     }
                 });

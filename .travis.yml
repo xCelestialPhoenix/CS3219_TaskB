@@ -7,7 +7,8 @@ services:
 
 before_install:
   - mysql -e 'CREATE DATABASE cs3219TaskB;'
-  - mysql -e 'USE cs3219TaskB; CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255), mobile INTEGER);'
+  - mysql -e 'USE cs3219TaskB; CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255) PRIMARY KEY, \
+                password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255), mobile INTEGER);'
 
 cache:
   directories:

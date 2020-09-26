@@ -34,7 +34,8 @@ describe("Users", function() {
                 console.log("Error while dropping table:");
                 done(error);
             } else {
-                const sql_create_table = "CREATE TABLE users ( username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255), mobile INTEGER);";
+                const sql_create_table = "CREATE TABLE users ( username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), \
+                                            firstname VARCHAR(255), lastname VARCHAR(255), mobile INTEGER);";
                 db.query(sql_create_table, (error, result) => {
                     // Check for error
                     if (error) {
@@ -46,11 +47,11 @@ describe("Users", function() {
                 });
             }
         });
-
-        
     })
 
-    describe("GET /", () => {
+    describe("GET", () => {
+
+        // Test to get all the user record
         it("should get all users record", function(done) {
             chai.request(app)
                 .get('/api/user')

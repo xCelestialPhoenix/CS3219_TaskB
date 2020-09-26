@@ -62,8 +62,8 @@ describe("Users", function() {
             chai.request(app)
                 .get('/api/user')
                 .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('object');
                 });
         });
         

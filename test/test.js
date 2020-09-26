@@ -59,7 +59,6 @@ describe("Users", function() {
     describe("GET /", () => {
         
         it("should get all users record", (done) => {
-            setTimeout(done, 50);
             chai.request(app)
                 .get('/api/user')
                 .end((err, res) => {
@@ -70,7 +69,6 @@ describe("Users", function() {
         
         // Test to get single user record
         it("should get a single user record", (done) => {
-            setTimeout(done, 50);
             const username = "johndoe123";
             chai.request(app)
                 .get(`/api/user/${username}`)
@@ -82,7 +80,6 @@ describe("Users", function() {
         
         // Test to get single user record
         it("should not get a single student record", (done) => {
-            setTimeout(done, 50);
             const username = "johndoe123";
             chai.request(app)
                 .get(`/api/user/${username}`)

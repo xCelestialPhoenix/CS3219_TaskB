@@ -64,6 +64,7 @@ describe("Users", function() {
                 .end((err, res) => {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('object');
+                    done();
                 });
         });
         
@@ -75,6 +76,7 @@ describe("Users", function() {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
+                    done();
                 });
         });
         
@@ -85,6 +87,7 @@ describe("Users", function() {
                 .get(`/api/user/${username}`)
                 .end((err, res) => {
                     res.should.have.status(404);
+                    done();
                 });
         });
     });

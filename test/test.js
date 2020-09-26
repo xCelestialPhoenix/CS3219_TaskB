@@ -10,6 +10,27 @@ const users = require('./data/users').users;
 chai.use(chaiHttp);
 
 describe("Users", function() {
+
+    const newUser = {
+        username: "jakedoe123",
+        password: "12345678",
+        firstname: "Jake",
+        lastname: "Doe",
+        mobile: 93456789
+
+    }
+
+    const modifiedUser = {
+        username: "jakedoe123",
+        password: "123456",
+        firstname: "Jake",
+        lastname: "Doe",
+        mobile: 93456789
+
+    }
+
+
+
     before(function(done) {
         var status = null;
         users.forEach(function(user) {
@@ -49,7 +70,6 @@ describe("Users", function() {
     })
 
     describe("GET", () => {
-
         // Test to get all the user record
         it("should get all users record", function(done) {
             chai.request(app)
@@ -60,28 +80,45 @@ describe("Users", function() {
                     done();
                 });
         });
-        
-        // Test to get single user record
-        it("should get a single user record", function(done) {
-            const username = "johndoe123";
+    });
+
+    describe("POST", () => {
+        // Test to add a new user
+        it("should add a new user to the database", function(done) {
+
             chai.request(app)
-                .get(`/api/user/${username}`)
+                .post('/api/user')
+                .send(newUser)
                 .end((err, res) => {
                     chai.expect(res).to.have.status(200);
                     chai.expect(res.body).to.be.a('object');
                     done();
                 });
         });
-        
-        // Test to get single user record
-        it("should not get a single student record", function(done) {
-            const username = "notjohndoe123";
+    });
+
+    describe("PUT", () => {
+        it("should update Jake Doe's records", function(done) {
             chai.request(app)
-                .get(`/api/user/${username}`)
-                .end((err, res) => {
-                    chai.expect(res).to.have.status(404);
-                    done();
-                });
+            .put('/api/user/' + newUser.username)
+            .send(modifiedUser)
+            .end((err, res) => {
+                chai.expect(res).to.have.status(200);
+                chai.expect(res.body).to.be.a('object');
+                done();
+            });
+        });
+    });
+
+    describe("DELETE", () => {
+        it("should delete Jake Doe's entry", function(done) {
+            chai.request(app)
+            .delete('/api/user/' + modifiedUser.username)
+            .end((err, res) => {
+                chai.expect(res).to.have.status(200);
+                chai.expect(res.body).to.be.a('object');
+                done();
+            });
         });
     });
 });

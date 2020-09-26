@@ -14,15 +14,7 @@ const users = [
         lastname: "Doe",
         mobile: 92345678
 
-    },
-    {
-        username: "jakedoe123",
-        password: "12345678",
-        firstname: "Jake",
-        lastname: "Doe",
-        mobile: 93456789
-
-    },
+    }
 ];
 
 exports.users = users;

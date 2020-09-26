@@ -1,3 +1,4 @@
+//Import
 const router = require("express").Router();
 const userController = require("./controllers/userController");
 
@@ -7,9 +8,9 @@ router.get("/", function (request, result, next) {
     });
 });
 
-// GET users listing.
+// Route user requests to user controller
 router.route("/user")
-    .get(userController.index)
+    .get(userController.viewAllUser)
     .post(userController.addUser);
 
 router.route('/user/:username')
@@ -19,3 +20,4 @@ router.route('/user/:username')
 
 // Export API routes
 module.exports = router;
+

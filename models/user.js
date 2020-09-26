@@ -14,7 +14,8 @@ class User {
     }
  
     updateUser(username) {
-       return `UPDATE users SET firstname = '${this.firstname}', lastname = '${this.lastname}', password = '${this.password}', mobile = '${this.mobile}' WHERE username = ${username}`;
+       return `UPDATE users SET firstname = '${this.firstname}', lastname = '${this.lastname}',
+        password = '${this.password}', mobile = '${this.mobile}' WHERE username = ${username}`;
     }
  
     static getUserByUsername(username) {

@@ -83,7 +83,7 @@ describe("Users", function() {
         // Test to get single user record
         it("should not get a single student record", (done) => {
             setTimeout(done, 50);
-            const username = "notjohndoe123";
+            const username = "johndoe123";
             chai.request(app)
                 .get(`/api/user/${username}`)
                 .end((err, res) => {

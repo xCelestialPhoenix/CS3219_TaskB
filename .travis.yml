@@ -1,15 +1,16 @@
 language: node_js
-node_js: 
-  - "stable"
-
+node_js:
+- stable
 services:
-  - mysql
-
+- mysql
 before_install:
-  - mysql -e 'CREATE DATABASE cs3219TaskB;'
-  - mysql -e 'USE cs3219TaskB; CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255) PRIMARY KEY, 
-                password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255), mobile INTEGER);'
-
+- openssl aes-256-cbc -K $encrypted_324e90afc6c5_key -iv $encrypted_324e90afc6c5_iv
+  -in regal-creek-290403-4e2ba9af2d49.json.enc -out regal-creek-290403-4e2ba9af2d49.json
+  -d
+- mysql -e 'CREATE DATABASE cs3219TaskB;'
+- mysql -e 'USE cs3219TaskB; CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255)
+  PRIMARY KEY, password VARCHAR(255), firstname VARCHAR(255),lastname VARCHAR(255),
+  mobile INTEGER);'
 cache:
   directories:
-    - "node_modules"
+  - node_modules

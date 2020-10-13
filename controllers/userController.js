@@ -90,7 +90,7 @@ exports.updateUser = function (request, response) {
 // Handles deleting user
 exports.deleteUser = function (request, response) {
     const username = '"' + request.params.username + '"';
-    db.query(User.deleteUserByUsername(username), (error, userData) => {
+    db.query(User.deleteUserByUsername(username), (error, result) => {
         if (error) {
             response.status(404).json({
                 'error': error.message,
@@ -98,7 +98,7 @@ exports.deleteUser = function (request, response) {
         } else {
             response.status(200).json({
                 'message': 'User deleted successfully.',
-                'data': userData,
+                'data': result,
             });
         }
     })

@@ -16,7 +16,7 @@ cache:
   - node_modules
 deploy:
   provider: gae
-  keyfile: regal-creek-290403-4e2ba9af2d49.json
+  keyfile: regal-creek-290403-cdcacdf85698.json
   project: regal-creek-290403
   skip_cleanup: true
   no_promote: true

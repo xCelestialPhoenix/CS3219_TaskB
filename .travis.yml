@@ -20,3 +20,4 @@ deploy:
   keyfile: regal-creek-290403-4e2ba9af2d49.json
   project: regal-creek-290403
   skip_cleanup: true
+  no_promote: true

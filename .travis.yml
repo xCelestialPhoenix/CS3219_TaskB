@@ -14,3 +14,8 @@ before_install:
 cache:
   directories:
   - node_modules
+
+deploy:
+  provider: gae
+  keyfile: regal-creek-290403-4e2ba9af2d49.json
+  project: regal-creek-290403

@@ -18,5 +18,3 @@ deploy:
   provider: gae
   keyfile: regal-creek-290403-cdcacdf85698.json
   project: regal-creek-290403
-  skip_cleanup: true
-  no_promote: true

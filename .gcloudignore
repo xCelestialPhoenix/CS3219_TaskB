@@ -15,3 +15,7 @@
 
 # Node.js dependencies:
 node_modules/
+node_modules/fsevents/
+
+# The key
+regal-creek-290403-cdcacdf85698.json

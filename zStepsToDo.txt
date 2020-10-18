@@ -1,0 +1,9 @@
+Shifted all server files into one folder // Seperate vue and nodejs
+npm install vue-cli
+vue init webpack
+npm install npm-run-all // To run both client and server with one command
+npm install --save axios
+
+npm install --save bootstrap bootstrap-vue
+
+CORS not allowed for localhost. Add .header("Access-Control-Allow-Origin", "localhost:8080") to each response on server side and also add a cors file to handle cors requests
